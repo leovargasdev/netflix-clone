@@ -1,14 +1,18 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import theme from './styles/theme';
-import GlobalStyle from './styles/global';
+import Routes from './routes';
+import defaultTheme from './styles/theme';
+import GlobalStyles from './styles/global';
 
 const App: React.FC = () => (
-  <ThemeProvider theme={theme}>
-    <h1>Netflix - UI Clone</h1>
-    <GlobalStyle />
-  </ThemeProvider>
+  <BrowserRouter>
+    <ThemeProvider theme={defaultTheme}>
+      <Routes />
+      <GlobalStyles />
+    </ThemeProvider>
+  </BrowserRouter>
 );
 
 export default App;
