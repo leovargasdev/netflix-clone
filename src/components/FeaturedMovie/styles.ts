@@ -12,7 +12,7 @@ export const MovieBackground = styled.div<MovieBackgroundProps>`
   background-image: url(${props => props.image});
   background-size: cover;
   background-position: center;
-  height: 80vh;
+  height: 100vh;
 
   > div {
     width: inherit;
@@ -25,8 +25,10 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
 
-  padding: 20vh 0 0 5vh;
+  padding: 0 0 200px 40px;
+
   width: inherit;
   height: inherit;
   background: linear-gradient(

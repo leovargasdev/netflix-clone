@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 20px 10px 0;
+  margin: 20px 40px 0;
   /* Corta o conteúdo quando ele estourar as bordas do componente */
   overflow-x: hidden;
 `;

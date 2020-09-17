@@ -17,7 +17,7 @@ interface MovieProps {
   imageUrl: string;
   rating: string;
   releaseDate: string;
-  number_of_seasons: string;
+  seasons: string;
   overview: string;
   genres: string;
 }
@@ -30,20 +30,23 @@ const FeaturedMovie: React.FC = () => {
       .get(`/tv/76479?language=pt-BR&api_key=${process.env.REACT_APP_API_KEY}`)
       .then(response => {
         const { data } = response;
+        const seasons = `${data.number_of_seasons} Temporada${
+          data.number_of_seasons !== 1 && 's'
+        }`;
+
         setMovie({
           id: data.id,
           name: data.original_name,
           imageUrl: `https://image.tmdb.org/t/p/original${data.backdrop_path}`,
           rating: data.vote_average,
           releaseDate: data.first_air_date.toString().split('-')[0],
-          number_of_seasons: `Temporada${
-            data.number_of_seasons !== 1 && 's'
-          } `.concat(data.number_of_seasons),
+          seasons,
           overview: data.overview,
           genres: data.genres.map((genre: any) => genre.name).join(', '),
         });
       });
   }, []);
+
   return (
     <Container>
       {movie.id && (
@@ -54,7 +57,7 @@ const FeaturedMovie: React.FC = () => {
               <MovieInfo>
                 <span>{movie.rating}</span>
                 <span>{movie.releaseDate}</span>
-                <span>{movie.number_of_seasons}</span>
+                <span>{movie.seasons}</span>
               </MovieInfo>
               <p>{movie.overview}</p>
               <span>

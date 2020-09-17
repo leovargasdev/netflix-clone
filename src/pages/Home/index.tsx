@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 
+import NavBar from '../../components/NavBar';
 import SectionMovies from '../../components/SectionMovies';
 import FeaturedMovie from '../../components/FeaturedMovie';
 
@@ -25,8 +26,9 @@ const Home: React.FC = () => {
 
   return (
     <main>
+      <NavBar />
       <FeaturedMovie />
-      <div>
+      <div style={{ marginTop: -200 }}>
         {sectionsMovies.map((sectionMovie, index) => (
           <SectionMovies {...sectionMovie} key={index.toString()} />
         ))}
