@@ -12,7 +12,7 @@ const defaultTheme: DefaultTheme = {
     blue: '#6e86d6',
     yellow: '#f9a839',
 
-    body: '#111',
+    body: '#141414',
   },
 };
 

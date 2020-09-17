@@ -1,14 +1,24 @@
 import styled from 'styled-components';
 
-export const Container = styled.header`
+interface ContainerProps {
+  isBlack: boolean;
+}
+
+export const Container = styled.header<ContainerProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
 
+  z-index: 10;
   width: 100%;
-  padding: 6px 40px;
+  padding: 20px 40px;
   position: fixed;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 40%, transparent);
+  background: ${({ theme, isBlack }) =>
+    isBlack
+      ? theme.colors.body
+      : 'linear-gradient(to bottom, rgba(20, 20, 20, 0.2) 40%, transparent)'};
+
+  transition: background 0.8s;
 `;
 
 export const RoutesMenu = styled.div`
