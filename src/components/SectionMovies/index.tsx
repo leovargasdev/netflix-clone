@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 import api from '../../services/api';
 import {
@@ -24,38 +24,40 @@ interface MovieProps {
 const SectionMovies: React.FC<SectionMoviesProps> = ({ name, route }) => {
   const [movies, setMovies] = useState<MovieProps[]>([]);
   const [marginContent, setMarginContent] = useState(0);
-  // let MAX_WIDTH_CONTENT: number;
 
   useEffect(() => {
     const api_url = `${route}language=pt-BR&api_key=${process.env.REACT_APP_API_KEY}`;
 
-    api.get(api_url).then(response => {
-      // MAX_WIDTH_CONTENT = response.data.results.length * 150;
-      setMovies(response.data.results);
-    });
+    api.get(api_url).then(response => setMovies(response.data.results));
   }, [route]);
 
-  const handleScrollMovies = useCallback(direction => {
-    setMarginContent(stateMargin => {
-      // const error = stateMargin - 300 === MAX_WIDTH_CONTENT;
-      // console.log(error);
-      // if (!error) {
-      if (direction === 'left' && stateMargin - 300) return stateMargin - 300;
-      return stateMargin + 300;
-      // }
-      // return stateMargin;
-    });
-  }, []);
+  const MAX_WIDTH_CONTENT = useMemo(() => movies.length * 220, [movies]);
+
+  const handleScrollMovies = useCallback(
+    direction => {
+      setMarginContent(stateMargin => {
+        const newValue = stateMargin + (direction === 'left' ? -400 : 400);
+
+        const isError =
+          MAX_WIDTH_CONTENT + newValue < window.innerWidth || newValue === 400;
+
+        return isError ? stateMargin : newValue;
+      });
+    },
+    [MAX_WIDTH_CONTENT],
+  );
 
   return (
     <Container>
       <h1>{name}</h1>
 
       <ButtonLetf type="button" onClick={() => handleScrollMovies('right')}>
-        <FaAngleLeft />
+        <FaChevronLeft />
       </ButtonLetf>
 
-      <ContentMovies style={{ marginLeft: marginContent }}>
+      <ContentMovies
+        style={{ marginLeft: marginContent, width: MAX_WIDTH_CONTENT }}
+      >
         {movies.map(movie => (
           <Movie key={movie.id}>
             <img
@@ -67,7 +69,7 @@ const SectionMovies: React.FC<SectionMoviesProps> = ({ name, route }) => {
       </ContentMovies>
 
       <ButtonRight type="button" onClick={() => handleScrollMovies('left')}>
-        <FaAngleRight />
+        <FaChevronRight />
       </ButtonRight>
     </Container>
   );

@@ -26,16 +26,17 @@ export const Container = styled.div`
     border: 0;
 
     svg {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       color: ${({ theme }) => theme.colors.primary};
     }
+
     visibility: hidden;
 
     &:hover {
       svg {
-        width: 60px;
-        height: 60px;
+        width: 45px;
+        height: 45px;
       }
     }
   }
@@ -51,8 +52,6 @@ export const ContentMovies = styled.div`
   display: flex;
   flex-direction: row;
   align-items: stretch;
-
-  width: 10000px;
 
   transition: margin-left 1s;
 `;
