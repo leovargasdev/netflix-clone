@@ -27,7 +27,7 @@ const FeaturedMovie: React.FC = () => {
 
   useEffect(() => {
     api
-      .get(`/tv/76479?language=pt-BR&api_key=${process.env.REACT_APP_API_KEY}`)
+      .get(`/tv/1399?language=pt-BR&api_key=${process.env.REACT_APP_API_KEY}`)
       .then(response => {
         const { data } = response;
         const seasons = `${data.number_of_seasons} Temporada${

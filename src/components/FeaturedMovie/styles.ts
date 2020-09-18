@@ -47,6 +47,12 @@ export const Content = styled.div`
     font-size: 1.4vw;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
     margin-bottom: 10px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* number of lines to show */
+    -webkit-box-orient: vertical;
   }
 
   > span {

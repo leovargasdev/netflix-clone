@@ -3,9 +3,48 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 20px 40px 0;
+  padding: 20px 40px 0;
+
+  position: relative;
   /* Corta o conteúdo quando ele estourar as bordas do componente */
   overflow-x: hidden;
+  overflow-y: hidden;
+
+  h1 {
+    z-index: 7;
+  }
+
+  button {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    z-index: 5;
+    background: rgba(20, 20, 20, 0.8);
+    border: 0;
+
+    svg {
+      width: 50px;
+      height: 50px;
+      color: ${({ theme }) => theme.colors.primary};
+    }
+    visibility: hidden;
+
+    &:hover {
+      svg {
+        width: 60px;
+        height: 60px;
+      }
+    }
+  }
+
+  &:hover {
+    button {
+      visibility: visible;
+    }
+  }
 `;
 
 export const ContentMovies = styled.div`
@@ -14,6 +53,8 @@ export const ContentMovies = styled.div`
   align-items: stretch;
 
   width: 10000px;
+
+  transition: margin-left 1s;
 `;
 
 export const Movie = styled.div`
@@ -29,4 +70,12 @@ export const Movie = styled.div`
       transform: scale(1);
     }
   }
+`;
+
+export const ButtonLetf = styled.button`
+  left: 0;
+`;
+
+export const ButtonRight = styled.button`
+  right: 0;
 `;
