@@ -8,7 +8,7 @@ const defaultTheme: DefaultTheme = {
     secondary: '#828386',
     tertiary: '#b9bbbe',
 
-    red: '#f84a4b',
+    red: '#E50914',
     blue: '#6e86d6',
     yellow: '#f9a839',
 

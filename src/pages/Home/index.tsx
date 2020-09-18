@@ -5,6 +5,8 @@ import NavBar from '../../components/NavBar';
 import SectionMovies from '../../components/SectionMovies';
 import FeaturedMovie from '../../components/FeaturedMovie';
 
+import { Loading } from './styles';
+
 interface SectionsMoviesProps {
   name: string;
   route: string;
@@ -27,12 +29,16 @@ const Home: React.FC = () => {
   return (
     <main>
       <NavBar />
-      <FeaturedMovie />
+      <Loading>
+        <span />
+        {/* <h1>N</h1> */}
+      </Loading>
+      {/* <FeaturedMovie />
       <div style={{ marginTop: -200 }}>
         {sectionsMovies.map((sectionMovie, index) => (
           <SectionMovies {...sectionMovie} key={index.toString()} />
         ))}
-      </div>
+      </div> */}
     </main>
   );
 };
