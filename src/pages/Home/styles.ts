@@ -2,27 +2,43 @@ import styled from 'styled-components';
 
 export const Loading = styled.div`
   display: flex;
-
-  padding: 100px 0 0 100px;
   width: 100%;
   height: 100vh;
 
-  span {
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     margin: auto;
-    transform: translate(-50%, -50%);
-
-    background: transparent;
-    border-top: 4px solid transparent;
-    border-left: 4px solid ${({ theme }) => theme.colors.red};
-    border-bottom: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-radius: 50%;
-
     width: 200px;
     height: 200px;
+    position: relative;
 
-    transform-origin: center center;
-    animation: rotation 1.5s linear infinite;
+    span {
+      position: absolute;
+      top: 100px;
+      left: 100px;
+      transform: translate(-50%, -50%);
+
+      background: transparent;
+      border-top: 2px solid transparent;
+      border-left: 2px solid ${({ theme }) => theme.colors.red};
+      border-bottom: 2px solid transparent;
+      border-right: 2px solid transparent;
+      border-radius: 50%;
+
+      width: inherit;
+      height: inherit;
+
+      transform-origin: center center;
+      animation: rotation 1s linear infinite;
+    }
+
+    strong {
+      color: ${({ theme }) => theme.colors.red};
+      font-size: 70px;
+    }
   }
 
   @keyframes rotation {
@@ -33,13 +49,4 @@ export const Loading = styled.div`
       transform: translate(-50%, -50%) rotate(360deg);
     }
   }
-
-  /* h1 {
-    position: absolute;
-    display: flex;
-    justify-self: center;
-    color: ${({
-    theme,
-  }) => theme.colors.red};
-  } */
 `;

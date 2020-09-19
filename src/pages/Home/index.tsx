@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import NavBar from '../../components/NavBar';
 import SectionMovies from '../../components/SectionMovies';
@@ -14,6 +14,7 @@ interface SectionsMoviesProps {
 
 const Home: React.FC = () => {
   // const [featuredMovie, setFeaturedMovie] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const sectionsMovies: SectionsMoviesProps[] = [
     { name: 'Originais do Netflix', route: '/discover/tv/?with_network=213&' },
@@ -26,19 +27,30 @@ const Home: React.FC = () => {
     // { name: 'Documentários', route: '/discover/movie?with_genres=99&' },
   ];
 
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 1000);
+  }, []);
+
   return (
     <main>
       <NavBar />
-      <Loading>
-        <span />
-        {/* <h1>N</h1> */}
-      </Loading>
-      {/* <FeaturedMovie />
-      <div style={{ marginTop: -200 }}>
-        {sectionsMovies.map((sectionMovie, index) => (
-          <SectionMovies {...sectionMovie} key={index.toString()} />
-        ))}
-      </div> */}
+      {loading ? (
+        <Loading>
+          <div>
+            <span />
+            <strong>N</strong>
+          </div>
+        </Loading>
+      ) : (
+        <>
+          <FeaturedMovie />
+          <div style={{ marginTop: -200 }}>
+            {sectionsMovies.map((sectionMovie, index) => (
+              <SectionMovies {...sectionMovie} key={index.toString()} />
+            ))}
+          </div>
+        </>
+      )}
     </main>
   );
 };
