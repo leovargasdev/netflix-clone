@@ -1,7 +1,6 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-import api from '../../services/api';
 import {
   Container,
   ContentMovies,
@@ -11,8 +10,8 @@ import {
 } from './styles';
 
 interface SectionMoviesProps {
+  movies: MovieProps[];
   name: string;
-  route: string;
 }
 
 interface MovieProps {
@@ -21,15 +20,8 @@ interface MovieProps {
   poster_path: string;
 }
 
-const SectionMovies: React.FC<SectionMoviesProps> = ({ name, route }) => {
-  const [movies, setMovies] = useState<MovieProps[]>([]);
+const SectionMovies: React.FC<SectionMoviesProps> = ({ name, movies }) => {
   const [marginContent, setMarginContent] = useState(0);
-
-  useEffect(() => {
-    const api_url = `${route}language=pt-BR&api_key=${process.env.REACT_APP_API_KEY}`;
-
-    api.get(api_url).then(response => setMovies(response.data.results));
-  }, [route]);
 
   const MAX_WIDTH_CONTENT = useMemo(() => movies.length * 220, [movies]);
 

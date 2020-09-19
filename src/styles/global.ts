@@ -1,6 +1,25 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
+  ::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 1px #000;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.colors.red};
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: ${({ theme }) => theme.colors.red};
+  }
+
   * {
     margin: 0;
     padding: 0;
