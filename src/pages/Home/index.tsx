@@ -10,7 +10,9 @@ import api from '../../services/api';
 
 interface MovieProps {
   id: string;
-  name: string;
+  name?: string;
+  title?: string;
+  overview: string;
   poster_path: string;
 }
 
@@ -29,13 +31,13 @@ const Home: React.FC = () => {
 
   const apiRoutes: { name: string; route: string }[] = [
     { name: 'Em alta', route: '/tv/popular?' },
-    { name: 'Populares na Netflix', route: '/trending/all/week?' },
+    { name: 'Populares na Cloneflix', route: '/trending/all/week?' },
     { name: 'Melhores Avaliados', route: '/movie/top_rated?' },
     { name: 'Lançamentos', route: '/movie/now_playing?' },
     { name: 'Ação', route: '/discover/movie?with_genres=28&' },
-    { name: 'Comédia', route: '/discover/movie?with_genres=35&' },
-    // { name: 'Romance', route: '/discover/movie?with_genres=10749&' },
-    // { name: 'Documentário', route: '/discover/movie?with_genres=99&' },
+    { name: 'Ficção científica', route: '/discover/movie?with_genres=878&' },
+    { name: 'Romance', route: '/discover/movie?with_genres=10749&' },
+    { name: 'Documentário', route: '/discover/movie?with_genres=99&' },
   ];
 
   useEffect(() => {
@@ -63,6 +65,7 @@ const Home: React.FC = () => {
 
           const randamIdMovie = Math.floor(Math.random() * 20);
           setFeaturedMovieId(responsesApi[0].movies[randamIdMovie].id);
+          // setFeaturedMovieId(75006);
           // Criando efeito de loading
           setTimeout(() => setLoading(false), 500);
         })

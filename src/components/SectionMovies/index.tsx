@@ -1,10 +1,19 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import {
+  FaChevronLeft,
+  FaChevronRight,
+  FaPlay,
+  FaThumbsDown,
+  FaThumbsUp,
+  FaPlus,
+} from 'react-icons/fa';
 
 import {
   Container,
   ContentMovies,
   Movie,
+  MovieCard,
+  MovieCardControll,
   ButtonLetf,
   ButtonRight,
 } from './styles';
@@ -16,7 +25,9 @@ interface SectionMoviesProps {
 
 interface MovieProps {
   id: string;
-  name: string;
+  name?: string;
+  title?: string;
+  overview: string;
   poster_path: string;
 }
 
@@ -56,6 +67,24 @@ const SectionMovies: React.FC<SectionMoviesProps> = ({ name, movies }) => {
               src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
               alt={`Capa do filme/seriado ${movie.name}`}
             />
+            <MovieCard>
+              <strong>{movie.name || movie.title}</strong>
+              <p>{movie.overview}</p>
+              <MovieCardControll>
+                <button type="button">
+                  <FaPlay /> Assistir
+                </button>
+                <span>
+                  <FaPlus />
+                </span>
+                <span>
+                  <FaThumbsUp />
+                </span>
+                <span>
+                  <FaThumbsDown />
+                </span>
+              </MovieCardControll>
+            </MovieCard>
           </Movie>
         ))}
       </ContentMovies>
