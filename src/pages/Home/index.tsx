@@ -1,8 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 
-import { stringify } from 'querystring';
 import NavBar from '../../components/NavBar';
 import SectionMovies from '../../components/SectionMovies';
 import FeaturedMovie from '../../components/FeaturedMovie';
@@ -37,35 +35,34 @@ const Home: React.FC = () => {
     { name: 'Comédia', route: '/discover/movie?with_genres=35&' },
     { name: 'Terror', route: '/discover/movie?with_genres=27&' },
     { name: 'Romance', route: '/discover/movie?with_genres=10749&' },
-    { name: 'Documentários', route: '/discover/movie?with_genres=99&' },
   ];
 
   useEffect(() => {
     const URL_LANGUAGE_AND_KEY = `language=pt-BR&api_key=${process.env.REACT_APP_API_KEY}`;
 
-    const urls = apiRoutes.map(({ route }) =>
+    const urlsAxios = apiRoutes.map(({ route }) =>
       api.get(route.concat(URL_LANGUAGE_AND_KEY)),
     );
 
-    axios
-      .all(urls)
-      .then(
-        axios.spread((...responses) => {
+    if (sectionsMovies.length === 0) {
+      Promise.all([...urlsAxios])
+        .then(responses => {
           const responsesApi = responses.map((response, index) => ({
             id: index,
             name: apiRoutes[index].name,
             movies: response.data.results,
           }));
-          console.log(`sadhjahsdkhajd`);
+
           setSectionsMovies(responsesApi);
-          // Mostrando efeito de loading
-          // setTimeout(() => setLoading(false), 1000);
-        }),
-      )
-      .catch(errors => {
-        console.log(errors);
-      });
-  }, [apiRoutes]);
+          console.log('funfou');
+          // Criando efeito de loading
+          setTimeout(() => setLoading(false), 1000);
+        })
+        .catch(errors => {
+          console.log(errors);
+        });
+    }
+  }, [apiRoutes, sectionsMovies]);
 
   return (
     <main>
