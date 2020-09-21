@@ -72,7 +72,12 @@ export const MovieInfo = styled.div`
     font-size: 25px;
 
     & + span {
-      margin-left: 15px;
+      margin-left: 20px;
+    }
+
+    &:nth-child(1) {
+      color: ${({ theme }) => theme.colors.green};
+      font-weight: 700;
     }
   }
 `;

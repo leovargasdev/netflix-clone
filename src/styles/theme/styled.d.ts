@@ -11,6 +11,7 @@ declare module 'styled-components' {
       tertiary: string;
 
       red: string;
+      green: string;
       blue: string;
       yellow: string;
 

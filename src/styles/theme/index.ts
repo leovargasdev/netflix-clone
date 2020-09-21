@@ -9,6 +9,7 @@ const defaultTheme: DefaultTheme = {
     tertiary: '#b9bbbe',
 
     red: '#E50914',
+    green: '#46d369',
     blue: '#6e86d6',
     yellow: '#f9a839',
 
