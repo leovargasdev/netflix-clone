@@ -22,18 +22,19 @@ interface MovieProps {
   genres: string;
 }
 
-const FeaturedMovie: React.FC = () => {
+const FeaturedMovie: React.FC<{ movieId: number }> = ({ movieId }) => {
   const [movie, setMovie] = useState<MovieProps>({} as MovieProps);
 
   useEffect(() => {
     api
-      .get(`/tv/1399?language=pt-BR&api_key=${process.env.REACT_APP_API_KEY}`)
+      .get(
+        `/tv/${movieId}?language=pt-BR&api_key=${process.env.REACT_APP_API_KEY}`,
+      )
       .then(response => {
         const { data } = response;
         const seasons = `${data.number_of_seasons} Temporada${
-          data.number_of_seasons !== 1 && 's'
+          data.number_of_seasons > 1 ? 's' : ''
         }`;
-
         setMovie({
           id: data.id,
           name: data.original_name,
@@ -45,7 +46,7 @@ const FeaturedMovie: React.FC = () => {
           genres: data.genres.map((genre: any) => genre.name).join(', '),
         });
       });
-  }, []);
+  }, [movieId]);
 
   return (
     <Container>

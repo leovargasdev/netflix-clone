@@ -21,7 +21,7 @@ interface SectionsMoviesProps {
 }
 
 const Home: React.FC = () => {
-  // const [featuredMovie, setFeaturedMovie] = useState(null);
+  const [featuredMovieId, setFeaturedMovieId] = useState<number>(0);
   const [sectionsMovies, setSectionsMovies] = useState<SectionsMoviesProps[]>(
     [],
   );
@@ -54,9 +54,11 @@ const Home: React.FC = () => {
           }));
 
           setSectionsMovies(responsesApi);
-          console.log('funfou');
+
+          const randamIdMovie = Math.floor(Math.random() * 20);
+          setFeaturedMovieId(responsesApi[0].movies[randamIdMovie].id);
           // Criando efeito de loading
-          setTimeout(() => setLoading(false), 1000);
+          setTimeout(() => setLoading(false), 500);
         })
         .catch(errors => {
           console.log(errors);
@@ -76,7 +78,7 @@ const Home: React.FC = () => {
         </Loading>
       ) : (
         <>
-          <FeaturedMovie />
+          <FeaturedMovie movieId={featuredMovieId} />
           <div style={{ marginTop: -200 }}>
             {sectionsMovies.map(sectionMovie => (
               <SectionMovies {...sectionMovie} key={sectionMovie.id} />
