@@ -1,10 +1,10 @@
-<h1 align="center">
+<p align="center">
   <img alt="NetflixClone" title="NetflixClone" src=".github/logo.svg" width="400px" />
-</h1>
+</p>
 
-<h2 align = "center">
+<h3 align = "center" fontSize="60px">
   Clone da plataforma de streaming <a href="https://www.netflix.com/">Netflix</a>
-</h2>
+</h3>
 
 <p align="center">
   <img alt="Interface da aplicação" src=".github/screenshot.png" width="100%">
@@ -41,6 +41,8 @@ Todos os dados dos catálogos como título, descrição, capa, foto de backgroun
 - [x] **Cartão Catálogo**: Apresentar um cartão com os detalhes do catálogo ao passar o mouse por cima da capa.
 
 - [x] **Listagem Carrossel**: Apresentar botões de controle para manipular a visualização dos itens da sessão.
+
+- [ ] **Listagem Infinita**: Ao chegar no final da lista dos catálogos deve-se apresentar os mesmos itens do início.
 
 
 ## 📥 Instalação e execução
