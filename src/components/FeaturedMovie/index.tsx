@@ -29,7 +29,9 @@ const FeaturedMovie: React.FC<{ movieId: number }> = ({ movieId }) => {
 
   useEffect(() => {
     api
-      .get(`/tv/76479?language=pt-BR&api_key=${process.env.REACT_APP_API_KEY}`)
+      .get(
+        `/tv/${movieId}?language=pt-BR&api_key=${process.env.REACT_APP_API_KEY}`,
+      )
       .then(response => {
         const { data } = response;
         const seasons = `${data.number_of_seasons} Temporada${
@@ -52,32 +54,6 @@ const FeaturedMovie: React.FC<{ movieId: number }> = ({ movieId }) => {
           genres: data.genres.map((genre: any) => genre.name).join(', '),
         });
       });
-    // api
-    //   .get(`/movie/672?language=pt-BR&api_key=${process.env.REACT_APP_API_KEY}`)
-    //   .then(response => {
-    //     const { data } = response;
-    //     const runtime = (data.runtime / 60)
-    //       .toFixed(1)
-    //       .toString()
-    //       .replace('.', 'h')
-    //       .concat('min');
-    //     const rating = data.vote_average.toString();
-
-    //     const ratingFormatted = rating.includes('.')
-    //       ? rating.replace('.', '')
-    //       : rating.concat('0');
-
-    //     setMovie({
-    //       id: data.id,
-    //       name: data.title,
-    //       imageUrl: `https://image.tmdb.org/t/p/original${data.backdrop_path}`,
-    //       rating: ratingFormatted,
-    //       releaseDate: data.release_date.toString().split('-')[0],
-    //       runtime: runtime.toString(),
-    //       overview: data.overview,
-    //       genres: data.genres.map((genre: any) => genre.name).join(', '),
-    //     });
-    //   });
   }, [movieId]);
 
   return (
