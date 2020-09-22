@@ -5,7 +5,7 @@ import NavBar from '../../components/NavBar';
 import SectionMovies from '../../components/SectionMovies';
 import FeaturedMovie from '../../components/FeaturedMovie';
 
-import { Loading } from './styles';
+import { Container, Loading } from './styles';
 import api from '../../services/api';
 
 interface MovieProps {
@@ -34,10 +34,9 @@ const Home: React.FC = () => {
     { name: 'Populares na Cloneflix', route: '/trending/all/week?' },
     { name: 'Melhores Avaliados', route: '/movie/top_rated?' },
     { name: 'Lançamentos', route: '/movie/now_playing?' },
-    { name: 'Ação', route: '/discover/movie?with_genres=28&' },
-    { name: 'Ficção científica', route: '/discover/movie?with_genres=878&' },
-    { name: 'Romance', route: '/discover/movie?with_genres=10749&' },
-    { name: 'Documentário', route: '/discover/movie?with_genres=99&' },
+    // { name: 'Ação', route: '/discover/movie?with_genres=28&' },
+    // { name: 'Ficção científica', route: '/discover/movie?with_genres=878&' },
+    // { name: 'Romance', route: '/discover/movie?with_genres=10749&' },
   ];
 
   useEffect(() => {
@@ -67,7 +66,7 @@ const Home: React.FC = () => {
           setFeaturedMovieId(responsesApi[0].movies[randamIdMovie].id);
           // setFeaturedMovieId(75006);
           // Criando efeito de loading
-          setTimeout(() => setLoading(false), 500);
+          setTimeout(() => setLoading(false), 800);
         })
         .catch(errors => {
           console.log(errors);
@@ -76,7 +75,7 @@ const Home: React.FC = () => {
   }, [apiRoutes, sectionsMovies]);
 
   return (
-    <main>
+    <Container>
       <NavBar />
       {loading ? (
         <Loading>
@@ -95,7 +94,7 @@ const Home: React.FC = () => {
           </div>
         </>
       )}
-    </main>
+    </Container>
   );
 };
 
