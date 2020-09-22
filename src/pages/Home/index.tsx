@@ -34,9 +34,9 @@ const Home: React.FC = () => {
     { name: 'Populares na Cloneflix', route: '/trending/all/week?' },
     { name: 'Melhores Avaliados', route: '/movie/top_rated?' },
     { name: 'Lançamentos', route: '/movie/now_playing?' },
-    // { name: 'Ação', route: '/discover/movie?with_genres=28&' },
-    // { name: 'Ficção científica', route: '/discover/movie?with_genres=878&' },
-    // { name: 'Romance', route: '/discover/movie?with_genres=10749&' },
+    { name: 'Ação', route: '/discover/movie?with_genres=28&' },
+    { name: 'Ficção científica', route: '/discover/movie?with_genres=878&' },
+    { name: 'Romance', route: '/discover/movie?with_genres=10749&' },
   ];
 
   useEffect(() => {

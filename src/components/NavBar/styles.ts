@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 interface ContainerProps {
   isBlack: boolean;
@@ -19,6 +20,10 @@ export const Container = styled.header<ContainerProps>`
       : 'linear-gradient(to bottom, rgba(20, 20, 20, 0.2) 40%, transparent)'};
 
   transition: background 0.8s;
+
+  ${media.lessThan('medium')`
+    padding: 20px 10px;
+  `}
 `;
 
 export const RoutesMenu = styled.div`
@@ -51,6 +56,11 @@ export const RoutesMenu = styled.div`
       }
     }
   }
+  ${media.lessThan('medium')`
+    ul {
+      display: none;
+    }
+  `}
 `;
 
 export const Profile = styled.div`
@@ -84,4 +94,15 @@ export const Profile = styled.div`
       color: ${({ theme }) => theme.colors.primary};
     }
   }
+
+  ${media.lessThan('medium')`
+    > svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 24px;
+    }
+    button {
+      margin-right: 18px;
+    }
+  `}
 `;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 export const Container = styled.div`
   display: flex;
@@ -46,6 +47,30 @@ export const Container = styled.div`
       visibility: visible;
     }
   }
+
+  ${media.lessThan('medium')`
+    padding: 10px 20px 0;
+
+    /* overflow: scroll;
+    -webkit-overflow-scrolling: touch; */
+    h1 {
+      font-size: 28px;
+    }
+    > button {
+      svg {
+        width: 25px;
+        height: 25px;
+        color: ${({ theme }) => theme.colors.primary};
+      }
+
+      &:hover {
+        svg {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+  `}
 `;
 
 export const ContentMovies = styled.div`
@@ -88,6 +113,17 @@ export const Movie = styled.div`
       transform: scale(1) translateX(-100px);
     }
   }
+
+  ${media.lessThan('medium')`
+    width: 150px;
+
+    &:hover {
+      img {
+        border-radius: 0px;
+        transform: scale(1);
+      }
+    }
+  `}
 `;
 
 export const MovieCard = styled.div`
@@ -127,6 +163,10 @@ export const MovieCard = styled.div`
 
     margin-bottom: 20px;
   }
+  /* Desabilitando card no mobile */
+  ${media.lessThan('medium')`
+    display: none;
+  `}
 `;
 
 export const MovieCardControll = styled.div`

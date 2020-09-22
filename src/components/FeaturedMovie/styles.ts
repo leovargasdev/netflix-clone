@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 interface MovieBackgroundProps {
   image: string;
@@ -43,8 +44,8 @@ export const Content = styled.div`
   }
 
   p {
-    width: 30%;
-    font-size: 1.4vw;
+    width: 560px;
+    font-size: 26px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
     margin-bottom: 10px;
 
@@ -60,6 +61,26 @@ export const Content = styled.div`
     color: ${({ theme }) => theme.colors.tertiary};
     margin-bottom: 20px;
   }
+
+  ${media.lessThan('medium')`
+    padding: 0 0 150px 20px;
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    p {
+      width: 100%;
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    > span {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+  `};
 `;
 
 export const MovieInfo = styled.div`
@@ -80,6 +101,18 @@ export const MovieInfo = styled.div`
       font-weight: 700;
     }
   }
+
+  ${media.lessThan('medium')`
+    margin-bottom: 8px;
+
+    span {
+      font-size: 18px;
+
+      & + span {
+        margin-left: 10px;
+      }
+    }
+  `};
 `;
 
 export const MovieButtons = styled.div`
@@ -105,6 +138,17 @@ export const MovieButtons = styled.div`
       opacity: 0.8;
     }
   }
+  ${media.lessThan('medium')`
+    a {
+      padding: 8px 20px;
+      font-size: 16px;
+
+      svg {
+        width: 15px;
+        height: 15px;
+      }
+    }
+  `};
 `;
 
 export const MovieButtonPlay = styled.a`
