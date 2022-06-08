@@ -45,7 +45,7 @@ const FeaturedMovie: React.FC<{ movieId: number }> = ({ movieId }) => {
 
         setMovie({
           id: data.id,
-          name: data.original_name,
+          name: data.name,
           imageUrl: `https://image.tmdb.org/t/p/original${data.backdrop_path}`,
           rating: ratingFormatted,
           releaseDate: data.first_air_date.toString().split('-')[0],

@@ -32,8 +32,11 @@ export const RoutesMenu = styled.div`
 
   img {
     width: auto;
-    height: 30px;
+    height: 70px;
     margin-right: 15px;
+    filter: saturate(1.4);
+
+
   }
 
   ul {
@@ -43,12 +46,12 @@ export const RoutesMenu = styled.div`
     align-items: center;
 
     li {
-      font-size: 14px;
+      font-size: 20px;
       color: ${({ theme }) => theme.colors.primary};
       font-weight: 400;
 
       & + li {
-        margin-left: 20px;
+        margin-left: 30px;
       }
 
       &:hover {
@@ -68,10 +71,21 @@ export const Profile = styled.div`
   align-items: center;
 
   > svg {
-    width: 22px;
-    height: 22px;
+    width: 27px;
+    height: 27px;
     color: ${({ theme }) => theme.colors.primary};
     margin-right: 30px;
+  }
+
+  input {
+    background-color: black;
+    color: white;
+    margin: 10px 20px;
+    padding: 6px;
+    border: 0px;
+    border-radius: 4px;
+    opacity: 0.45;
+    width: 250px;
   }
 
   button {
@@ -83,7 +97,7 @@ export const Profile = styled.div`
 
     img {
       width: auto;
-      height: 30px;
+      height: 40px;
       border-radius: 6px;
       margin-right: 3px;
     }

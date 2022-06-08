@@ -31,8 +31,8 @@ const Home: React.FC = () => {
 
   const apiRoutes: { name: string; route: string }[] = [
     { name: 'Em alta', route: '/tv/popular?' },
-    { name: 'Populares na Cloneflix', route: '/trending/all/week?' },
-    { name: 'Melhores Avaliados', route: '/movie/top_rated?' },
+    { name: 'Séries populares no N.A.Flix', route: '/account/12457302/watchlist/tv?session_id=cb0c043a0ca4a4bcf667af7d031bd17bf6d4d19e&language=pt-BR' },
+    { name: 'Filmes bem Avaliados', route: '/account/12457302/watchlist/movies?session_id=cb0c043a0ca4a4bcf667af7d031bd17bf6d4d19e&language=pt-BR' },
     { name: 'Lançamentos', route: '/movie/now_playing?' },
     { name: 'Ação', route: '/discover/movie?with_genres=28&' },
     { name: 'Ficção científica', route: '/discover/movie?with_genres=878&' },
@@ -64,7 +64,10 @@ const Home: React.FC = () => {
 
           const randamIdMovie = Math.floor(Math.random() * 20);
           setFeaturedMovieId(responsesApi[0].movies[randamIdMovie].id);
-          // setFeaturedMovieId(75006);
+          // setFeaturedMovieId(75006); //umbrella academy
+          // setFeaturedMovieId(93405); //squid game
+          // setFeaturedMovieId(66732); //stranger things
+          
           // Criando efeito de loading
           setTimeout(() => setLoading(false), 800);
         })

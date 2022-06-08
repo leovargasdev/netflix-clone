@@ -32,6 +32,9 @@ const NavBar: React.FC = () => {
         </ul>
       </RoutesMenu>
       <Profile>
+        <div>
+          <input placeholder="Pesquisar filmes..."/>
+        </div>
         <FaSearch />
         <FaGift />
         <FaBell />
